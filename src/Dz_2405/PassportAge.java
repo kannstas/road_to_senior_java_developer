@@ -21,9 +21,6 @@ public class PassportAge {
             System.out.println("Ваш паспорт действует бессрочно");
 
         }
-
-        привет, Я настя
-
     }
 }
 
