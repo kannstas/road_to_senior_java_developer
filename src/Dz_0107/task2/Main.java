@@ -17,6 +17,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
+        //поля сделаь приватные
         Contact[] contacts = new Contact[10];
         Menu menu = new Menu();
         mainMenu(contacts);
@@ -46,24 +47,7 @@ public class Main {
 
     public static void addContact(Contact[] contacts) {
         Scanner in = new Scanner(System.in);
-        try {
-            for (int i = 0; i < contacts.length; i++) {
-                String answer = in.nextLine();
-                String[] splitResult = answer.split(" ");
-                contacts[i] = new Contact(
-                        splitResult[0],
-                        splitResult[1],
-                        Integer.parseInt(splitResult[2]));
-                System.out.println(Arrays.toString(contacts));
-                System.out.println(splitResult[0] + " " + splitResult[1] + " " + splitResult[2] + " был добавлен в записную книжку");
-//ПОЧЕМУ-ТО ДОБАВЛЯЕТ ТОЛЬКО ПОСЛЕДНИЙ ЗАПИСАННЫЙ ОБЪЕКТ
-            }
-
-        } catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
-            System.out.println("Нет места в записной книжке");
-
-        }
+        // принять данные после создать объект контакт после проверить  в массиве контактов если есть свободная ячейка с null то туда записать данный контакт
     }
 
     public static void deleteContact(Contact[] contacts) {
@@ -72,6 +56,6 @@ public class Main {
         int i = in.nextInt();
         contacts [i] = null;
         System.out.println("Контакт " + contacts[i].getName() + " удален");
-        //?????????
+        //????????? не просот выводить чот контакт удален а удалить его из массива contacts
     }
 }
