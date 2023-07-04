@@ -3,9 +3,9 @@ package Dz_0107.task2;
 public class Contact {
     private String name;
     private String surname;
-    private int number;
+    private String number;
 
-    public Contact(String name, String surname, int number) {
+    public Contact(String name, String surname, String number) {
         this.name = name;
         this.surname = surname;
         this.number = number;
@@ -27,11 +27,11 @@ public class Contact {
         this.surname = surname;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
