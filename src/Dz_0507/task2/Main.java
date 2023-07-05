@@ -28,6 +28,6 @@ public class Main {
                 System.out.println("Введен неправильный город");
             }
         }
-
+        System.out.println("Завершение работы");
     }
 }
