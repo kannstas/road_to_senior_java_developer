@@ -8,5 +8,13 @@ package Dz_0107.task5;
 и вывести общее количество студентов (вызвав у класса Стдент метод который выводит их кол во)
  */
 public class Student {
-    static int count = 0;
+    private static int count = 0;
+
+    public Student() {
+        count++;
+    }
+
+    public static int getCount() {
+        return count;
+    }
 }

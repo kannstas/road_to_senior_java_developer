@@ -16,11 +16,11 @@ public class Main {
         for (int i = 0; i < array.length; i++) {
             array[i] = new Student();
             System.out.println("Студент: " + array[i] + " в ячейку: " + i);
-            Student.count++;
+
 
         }
         int year = LocalDate.now().getYear();
-        System.out.printf("Количество студентов в %d году: %d%n", year, Student.count);
+        System.out.printf("Количество студентов в %d году: %d%n", year, Student.getCount());
     }
 }
 
