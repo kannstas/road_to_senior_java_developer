@@ -5,11 +5,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Ввести число");
-        Scanner in = new Scanner(System.in);
-        int a = in.nextInt();
-        int b = in.nextInt();
+
+
         boolean state = false;
-        try {
+        try (Scanner in = new Scanner(System.in);){
+            int a = in.nextInt();
+            int b = in.nextInt();
             state = true;
             System.out.println(" соединение с бд " + state);
             System.out.println("данные загруженны");
