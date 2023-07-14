@@ -33,8 +33,8 @@ public class Main {
     public static void main(String[] args) {
 
         //phone.info();
-        Phone.MicroSd microSd = new Phone.MicroSd(); //почему-то если класс не был статическим, выдавалась ошибка
-        microSd.setMicroSd();
+      //почему-то если класс не был статическим, выдавалась ошибка
+
        // System.out.println(phone.getModel() + phone.getPrice() + microSd.getMicroSd());
 
         Menu menu = new Menu();

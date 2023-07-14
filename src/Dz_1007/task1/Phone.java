@@ -18,11 +18,13 @@ package Dz_1007.task1;
 public class Phone {
     private String model;
     private int price;
+    private MicroSd microSd;
 
 
     public Phone(String model, int price) {
         this.model = model;
         this.price = price;
+        this.microSd = new MicroSd();
     }
 
     public String getModel() {
@@ -87,7 +89,9 @@ public class Phone {
 
 
             }
-        } Battery battery = new Battery();
+        }
+        Battery battery = new Battery();
+        System.out.println(battery.getVolumeBattery());
     }
 }
 

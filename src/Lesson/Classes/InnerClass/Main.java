@@ -1,4 +1,6 @@
-package Lesson.Classes;
+package Lesson.Classes.InnerClass;
+
+import Lesson.Classes.InnerClass.Bmw;
 
 public class Main {
     public static void main(String[] args) {

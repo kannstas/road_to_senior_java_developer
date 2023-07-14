@@ -16,18 +16,22 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Введите название города");
         Scanner in = new Scanner(System.in);
-        IncorrectlyEnteredCityException.answer = in.nextLine();
-        if (IncorrectlyEnteredCityException.answer.contains("Москва") || IncorrectlyEnteredCityException.answer.contains("Ростов") ||
-                IncorrectlyEnteredCityException.answer.contains("Воронеж") || IncorrectlyEnteredCityException.answer.contains("Сочи") || IncorrectlyEnteredCityException.answer.contains("Краснодар")) {
+        String input = in.nextLine();
+        if (input.contains("Москва") ||
+                input.contains("Ростов") ||
+                input.contains("Воронеж") ||
+                input.contains("Сочи") ||
+                input.contains("Краснодар")) {
             System.out.println("Ваш город был записан");
         } else {
             try {
-                throw new IncorrectlyEnteredCityException();
-            } catch (IncorrectlyEnteredCityException e) {
+                throw new inputException(input);
+            } catch (inputException e) {
                 e.printStackTrace();
                 System.out.println("Введен неправильный город");
             }
         }
         System.out.println("Завершение работы");
+        in.close();
     }
 }

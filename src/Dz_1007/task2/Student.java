@@ -70,7 +70,7 @@ public class Student {
 
     }
 
-    private class Laptop {
+    private static class Laptop {
         private String model;
         private int memory;
 

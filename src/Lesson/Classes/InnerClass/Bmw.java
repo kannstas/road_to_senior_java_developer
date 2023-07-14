@@ -1,4 +1,4 @@
-package Lesson.Classes;
+package Lesson.Classes.InnerClass;
 
 public class Bmw {
     private String model;
