@@ -1,7 +1,5 @@
 package Dz_1007.task3;
 
-import Lesson.Classes.LocalClass.Product;
-
 import java.util.Scanner;
 
 /*
@@ -16,6 +14,8 @@ import java.util.Scanner;
 public class Store {
 
     Product[] products = new Product[100];
+    Product[] basket = new Product[100];
+    private  Scanner in = new Scanner(System.in);
 
     public Store() {
         addProducts(new Product("Milk", 134));
@@ -27,23 +27,28 @@ public class Store {
 
     }
 
-    public void addProducts(Product product) {
-        for (int i = 0; i < products.length; i++) {
+
+    public Product cteateProduct(){
+        System.out.println("введите название");
+        String title = in.nextLine();
+        int price = in.nextInt();
+        Product product = new Product(title,price);
+        return product;
+    }
+    public void addProducts( Product product) {
+        for(int i = 0; i < products.length; i++) {
             if (products[i] == null) {
                 products[i] = product;
-                System.out.println(products[i].getName() + " " + products[i].getPrice());
                 break;
             }
 
         }
-
-
     }
 
 
     public class Product {
-       String name;
-       int price;
+        String name;
+        int price;
 
         public Product(String name, int price) {
             this.name = name;
@@ -69,34 +74,78 @@ public class Store {
         }
     }
 
-    public void buyProduct() {
-        System.out.println("Введите название товара, который вы хотите купить");
-        Scanner in = new Scanner(System.in);
-        String answer = in.nextLine();
+    public void showProducts() {
         for (int i = 0; i < products.length; i++) {
-            if (answer.equals(products[i].getName())) {
-                System.out.println("Вы купили " + products[i].getName() + " " + products[i].getPrice());
-                //printBill();
-                break;
-                //здесь необходимо вставить метод с чеком//сделать возвратный метод?
-            } else {
-                System.out.println(answer + " нет в наличии");
+            if (products[i]!= null) {
+                System.out.println(products[i].getName()+" " + products[i].getPrice());
+            }
+
+        }
+    }
+
+    public void addToBasket(Product product) {
+        for (int i = 0; i < basket.length; i++) {
+            if (basket[i] == null) {
+                basket[i] = product;
                 break;
             }
 
         }
-
-class Check  {
-    static int numberOfBill = 0;
-    String nameOfProduct;
-    int costProduct;
-    Product product;
-
-    public Check(String nameOfProduct, int costProduct, String name, String price) {
-       // ?? this.nameOfProduct = new Product(name);
-        this.costProduct = costProduct;
     }
-}
+
+    public void buyProduct() {
+
+        buy:
+        while (true) {
+            System.out.println("Введите название товара, который вы хотите купить");
+            showProducts();
+
+            Scanner in = new Scanner(System.in);
+            String answer = in.nextLine();
+
+            boolean  b = false;
+            for (int i = 0; i < products.length; i++) {
+                if (products[i]!=null) {
+                    if (answer.equals(products[i].getName())) {
+                        System.out.println("Вы купили " + products[i].getName() + " " + products[i].getPrice());
+                        addToBasket(products[i]);
+                        b = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!b){
+                System.out.println("това не найден");
+            }
+
+            System.out.println("продолжить покупки?");
+            System.out.println("1 da");
+            System.out.println("2 no");
+            if (in.nextLine().trim().equals("2")) {
+                break buy;
+            }
+        }
+
+        class Check {
+            static int numberOfBill = 0;
+            private int sum;
+
+            void printCheck() {
+                System.out.println("оплаченно");
+                for (Product product1 : basket) {
+                    if (product1 != null) {
+                        System.out.println(product1.getName() + " " + product1.getPrice() + " rub");
+                        sum += product1.getPrice();
+                    }
+                }
+                System.out.println("итог " + sum);
+            }
+
+        }
+
+        Check check = new Check();
+        check.printCheck();
 
     }
 
@@ -121,7 +170,7 @@ class Check  {
    */
 
 
-    }
+}
 
 
 
