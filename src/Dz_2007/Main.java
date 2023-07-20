@@ -23,9 +23,11 @@ public class Main {
 
        Laptop laptop = new Laptop("LG", 30000, 13, 16, "GGG", 64);
 
+
        Laptop laptop1 = null;
 
        Laptop laptop2 = null;
+
 
        try {
            laptop1 =  (Laptop) laptop.clone();
@@ -49,5 +51,21 @@ public class Main {
 
 
 
+          /*
+        Laptop laptop3 = new Laptop("panasonic", 25000, new Processor(22),
+
+                new Ram(256), new VideoCard("HHH",12));
+
+        Laptop laptop4 = null;
+
+        try {
+            laptop4 = (Laptop) laptop3.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(laptop3.getPrice());
+        System.out.println(laptop4.getPrice());
+ */
     }
 }

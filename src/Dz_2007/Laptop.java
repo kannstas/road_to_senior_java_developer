@@ -13,6 +13,18 @@ public class Laptop implements Cloneable {
         this.processor = new Processor(hertz);
         this.ram = new Ram(volumeMemory);
         this.videoCard = new VideoCard(nameModel, volumeVideoCard);
+
+
+
+    /* public Laptop(String model, int price, Processor processor, Ram ram, VideoCard videoCard) {
+        this.model = model;
+        this.price = price;
+        this.processor = processor;
+        this.ram = ram;
+        this.videoCard = videoCard;
+
+     */
+
     }
 
     public String getModel() {
@@ -58,5 +70,9 @@ public class Laptop implements Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return new Laptop(model, price, processor.getHertz(), ram.getVolumeMemory(), videoCard.getNameModel(), videoCard.getVolumeVideoCard());
+
+
+        //  return new Laptop(model, price, processor, ram, videoCard);
     }
 }
+
