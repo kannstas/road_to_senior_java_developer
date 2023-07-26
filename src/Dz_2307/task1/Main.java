@@ -26,9 +26,10 @@ public class Main {
         System.out.println(Arrays.toString(intArray));
 
 
-       /*  Array <Integer> arrays = new Array (new Integer []{1, 2, 36, 32, 21, 15, 78, 74, 0});
-         Arrays.sort(arrays);//  получается, что так нельзя????????
-        */
+       //Array <Integer> arrays = new Array (new Integer []{1, 2, 36, 32, 21, 15, 78, 74, 0});
+
+        // Arrays.sort(arrays);//  получается, что так нельзя????????
+      //  */
 
 
     }

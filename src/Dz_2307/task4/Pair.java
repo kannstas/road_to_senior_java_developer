@@ -1,27 +1,20 @@
 package Dz_2307.task4;
 
-public class Pair <T,V>{
-    T t;
-    V v;
+public class Pair<LEFT, RIGHT> {
+    private final LEFT left;
+    private final RIGHT right;
 
-    public Pair(T t, V v) {
-        this.t = t;
-        this.v = v;
+    public Pair(LEFT left, RIGHT right) {
+        this.left = left;
+        this.right = right;
     }
 
-    public T getT() {
-        return t;
+    public LEFT getLeft() {
+        return left;
     }
 
-    public void setT(T t) {
-        this.t = t;
+    public RIGHT getRight() {
+        return right;
     }
 
-    public V getV() {
-        return v;
-    }
-
-    public void setV(V v) {
-        this.v = v;
-    }
 }
