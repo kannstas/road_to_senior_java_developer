@@ -18,38 +18,62 @@ import java.util.TreeMap;
 public class Main {
     public static void main(String[] args) {
 
-        HashMap<String, Double> mapProduct = new HashMap<>();
+        HashMap<Product, Integer> mapProduct = new HashMap<>();
 
-        mapProduct.put("Молоко", 50.0);
-        mapProduct.put("Молоко", 50.0);
-        mapProduct.put("Молоко", 50.0);
-        mapProduct.put("Молоко", 50.0);
+        mapProduct.put(new Product("Кефир", 60), 1);
+        mapProduct.put(new Product("Лосось", 1006), 2);
+        mapProduct.put(new Product("Жевачка", 10), 6);
+        Product product = null;
 
-        mapProduct.put("Сыр", 180.0);
-        mapProduct.put("Сыр", 150.0);
-        mapProduct.put("Сыр", 110.0);
+        for (Map.Entry<Product, Integer> entry: mapProduct.entrySet()) {
+            int minCount = Integer.MAX_VALUE;
 
-        mapProduct.put("Мороженое", 100.0);
-
-        System.out.println(mapProduct);
-
-        for (Map.Entry<String, Double> stringDoubleEntry : mapProduct.entrySet()) {
-            if (mapProduct.containsKey(stringDoubleEntry)) {
-                mapProduct.put(String.valueOf(stringDoubleEntry), mapProduct.get(String.valueOf(stringDoubleEntry)) + 1);
+            if (entry.getValue() < minCount) {
+                minCount = entry.getValue();
+                product = entry.getKey();
             }
-            else {
-               mapProduct.put(String.valueOf(stringDoubleEntry), 1.0);
-            }
+
+        }
+        if (product != null) {
+            System.out.println(product.getName() +  " " + product.getCost() + " " + mapProduct.get(product));
+
+
         }
 
-
-
-        for (Map.Entry<String, Double> s : mapProduct.entrySet()) {
-            System.out.println(s);
 
         }
 
 
 
+
+
+    static class Product {
+       private String name;
+       private int cost;
+
+        public Product(String name, int cost) {
+            this.name = name;
+            this.cost = cost;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getCost() {
+            return cost;
+        }
+
+        public void setCost(int cost) {
+            this.cost = cost;
+        }
     }
+
+
+
+
 }

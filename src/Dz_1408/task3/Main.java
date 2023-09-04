@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        HashSet hashSet = new HashSet();
+        HashSet<Integer> hashSet = new HashSet();
 
         hashSet.add(12);
         hashSet.add(15);
@@ -23,7 +23,7 @@ public class Main {
         System.out.println(hashSet); // 1. отсортировал по хэш коду, [0, 12, 15]
 
 
-        TreeSet treeSet = new TreeSet();
+        TreeSet <Integer>treeSet = new TreeSet();
 
         treeSet.add(12);
         treeSet.add(15);
@@ -32,7 +32,7 @@ public class Main {
 
         System.out.println(treeSet); // 2. отсортировал по возрастанию [-1, 12, 15, 40]
 
-        LinkedHashSet linkedHashSet = new LinkedHashSet<>();
+        LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
 
         linkedHashSet.add(12);
         linkedHashSet.add(0);
