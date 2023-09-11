@@ -29,7 +29,8 @@ public class Main {
 
         // создание файла? как его засунуть в папку??
 
-        File file = new File (fileName);
+        String p = "/Users/itprofil/Desktop/IT/JavaCore/src/Dz_0309/task1Old/";
+        File file = new File (p + fileName);
 
         try {
             if (file.createNewFile()) {
