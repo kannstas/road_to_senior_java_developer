@@ -23,10 +23,13 @@ import java.util.Scanner;
 
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ShoppingMall shoppingMall = new ShoppingMall();
-        MyRunnable1 myRunnable1 = new MyRunnable1();
-        MyRunnable2 myRunnable2 = new MyRunnable2();
+        ShoppingMall shoppingMall1 = new ShoppingMall();
+
+
+        MyRunnable1 myRunnable1 = new MyRunnable1(shoppingMall);
+        MyRunnable2 myRunnable2 = new MyRunnable2(shoppingMall1);
 
         Thread thread = new Thread(myRunnable1);
         Thread thread1 = new Thread(myRunnable2);
@@ -34,61 +37,83 @@ public class Main {
         thread.start();
         thread1.start();
 
+        thread1.join();
+        thread.join();
 
-
-    }
-
-
-    static class ShoppingMall {
-        String[] lamps = new String[15];
-
-
-        public void on() {
-            for (int i = 0; i < lamps.length; i++) {
-                lamps[i] = "включен";
-            }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-
-
-        public void off() {
-
-            for (int i = lamps.length; i >= 0; i--) {
-                System.out.println("выключен" + Thread.currentThread().getName());
-            }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-
-    static class MyRunnable1 implements Runnable {
-        ShoppingMall shoppingMall;
-
-        @Override
-        public void run() {
-            shoppingMall.on();
-        }
-    }
-
-
-    static class MyRunnable2 implements Runnable {
-
-        ShoppingMall shoppingMall;
-
-        @Override
-        public void run() {
-            shoppingMall.off();
-        }
+        System.out.println("работа завершенна");
+        System.out.println(Arrays.toString(shoppingMall.lamps));
 
 
     }
 }
+
+
+class ShoppingMall {
+    static Object lock = new Object();
+    static String[] lamps = new String[15];
+
+
+    public void on() {
+        synchronized (lock) {
+            for (int i = 0; i < lamps.length; i++) {
+                lamps[i] = "включен";
+                System.out.println("включен " + Thread.currentThread().getName());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+    }
+
+
+    public void off() {
+        synchronized (lock) {
+            for (int i = lamps.length - 1; i >= 0; i--) {
+                lamps[i] = "выключен";
+                System.out.println("выключен " + Thread.currentThread().getName());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+
+        }
+    }
+}
+
+
+class MyRunnable1 implements Runnable {
+    ShoppingMall shoppingMall;
+
+    public MyRunnable1(ShoppingMall shoppingMall) {
+        this.shoppingMall = shoppingMall;
+    }
+
+    @Override
+    public void run() {
+        shoppingMall.on();
+    }
+}
+
+
+class MyRunnable2 implements Runnable {
+
+    ShoppingMall shoppingMall;
+
+    public MyRunnable2(ShoppingMall shoppingMall) {
+        this.shoppingMall = shoppingMall;
+    }
+
+    @Override
+    public void run() {
+        shoppingMall.off();
+    }
+
+
+}
+
