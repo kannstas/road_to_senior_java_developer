@@ -18,9 +18,9 @@ public class Main {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
         for (int i = 0; i < 7; i++) {
-            scheduledExecutorService.scheduleAtFixedRate(new MyRunnable(), 7, 1, TimeUnit.SECONDS);
-        }
+            scheduledExecutorService.scheduleWithFixedDelay(new MyRunnable(),7, 1, TimeUnit.SECONDS );
 
+        }
 
         try {
             scheduledExecutorService.awaitTermination(10, TimeUnit.SECONDS);
